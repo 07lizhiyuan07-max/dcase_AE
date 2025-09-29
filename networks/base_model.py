@@ -61,8 +61,7 @@ class BaseModel(object):
             saved_log_path /= "log.csv"
             if os.path.exists(saved_log_path):
                 print(f"copy log: {saved_log_path}\n\t->{self.log_path}")
-                if os.path.abspath(saved_log_path) != os.path.abspath(self.log_path):
-                    shutil.copyfile(saved_log_path, self.log_path)
+                shutil.copyfile(saved_log_path, self.log_path)
             else:
                 print(f"Generate blank log: {self.log_path}")
                 np.savetxt(self.log_path,[log_data],fmt="%s")
@@ -74,8 +73,7 @@ class BaseModel(object):
         if self.args.restart:
             if os.path.exists(checkpoint_path):
                 print(f"load checkpoint -> {checkpoint_path}")
-                checkpoint = torch.load(checkpoint_path, map_location="cuda:0")
-
+                checkpoint = torch.load(checkpoint_path)
                 self.load_state_dict(checkpoint=checkpoint)
                 self.optim_state_dict = self.load_optim_state_dict(checkpoint=checkpoint)
                 if os.path.exists(self.log_path):

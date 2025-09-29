@@ -12,5 +12,5 @@ for machine_type in \
     "valve" \
 ; do
 wget "https://zenodo.org/records/15097779/files/dev_${machine_type}.zip"
-unzip "dev_${"ToyCar"}.zip"
+unzip "dev_${machine_type}.zip"
 done

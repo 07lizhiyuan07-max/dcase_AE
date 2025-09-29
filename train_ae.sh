@@ -19,7 +19,7 @@ tag="${tag}${i}_"
 done
 tag="${tag})"
 
-python train.py \
+python3 train.py \
     --dataset=${dataset} \
     ${dev_eval} \
     -tag=${tag} \

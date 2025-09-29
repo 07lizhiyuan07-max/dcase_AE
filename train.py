@@ -5,9 +5,6 @@ import torch
 # original lib
 import common as com
 from networks.models import Models
-import sys
-print(sys.argv)
-print(1)
 
 ########################################################################
 # load parameter.yaml
